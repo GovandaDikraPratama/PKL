@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="pull-left info">
                         <p>Analisis Sentimen Twitter</p>
                         <!-- Status -->
-                        <a href="#"><i class="fa fa-circle text-success"></i> Govanda Dikra Pratama</a>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>
                     </div>
                 </div>
 

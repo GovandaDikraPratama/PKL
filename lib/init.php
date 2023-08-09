@@ -1,4 +1,6 @@
 <?php
+use DG\Twitter\Twitter;
+
 session_start();
 $appDir = getcwd();
 if (!file_exists($appDir."/vendor/autoload.php")) {

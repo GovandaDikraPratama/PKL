@@ -1,6 +1,6 @@
 {
     "require": {
-        "dg/twitter-php": "^3.7",
+        "dg/twitter-php": "^4.1",
         "sastrawi/sastrawi": "^1"
     }
 }

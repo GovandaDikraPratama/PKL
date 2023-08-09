@@ -4,27 +4,33 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fbb32619b3e5740a1e27bf2fa9d0fee",
+    "content-hash": "85ec97bfe14396ac8d1956801c2b35fe",
     "packages": [
         {
             "name": "dg/twitter-php",
-            "version": "v3.7",
+            "version": "v4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/twitter-php.git",
-                "reference": "d8bb9f21dfc31d06641ee60c04f2850b4d4801b5"
+                "reference": "450baa2fd7b5e815c5f050b019c4486d1b1b01da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/twitter-php/zipball/d8bb9f21dfc31d06641ee60c04f2850b4d4801b5",
-                "reference": "d8bb9f21dfc31d06641ee60c04f2850b4d4801b5",
+                "url": "https://api.github.com/repos/dg/twitter-php/zipball/450baa2fd7b5e815c5f050b019c4486d1b1b01da",
+                "reference": "450baa2fd7b5e815c5f050b019c4486d1b1b01da",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": ">=5.4.0"
+                "ext-json": "*",
+                "php": ">=7.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "src/"
@@ -46,7 +52,10 @@
                 "oauth",
                 "twitter"
             ],
-            "time": "2018-03-15T10:07:08+00:00"
+            "support": {
+                "source": "https://github.com/dg/twitter-php/tree/master"
+            },
+            "time": "2020-05-11T22:48:42+00:00"
         },
         {
             "name": "sastrawi/sastrawi",
@@ -112,5 +121,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }

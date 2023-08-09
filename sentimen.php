@@ -24,88 +24,101 @@ if(isset($_POST['submit'])){
     }
 }
 $db->clear();
-?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+?>
+<style>
+@media print {
+    .pilih {
+        display: none;
+    }
+}
+</style>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
 
     <!-- Main content -->
     <section class="content container-fluid">
-      
-      <div class="row">
 
-          <div class="col-md-12">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Pilih Data</h3>
-                </div>
-              
-              <div class="box-body">
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="file">Kata Kunci ( hastag ) </label>
-                        <select class="form-control" name="key">
-                            <?php foreach($db->query("SELECT hastag FROM `tweets` GROUP BY hastag")->get() as $hastag):?>
-                                <option value="<?= $hastag['hastag'] ?>"> <?= $hastag['hastag'] ?> </option>
-                            <?php endforeach; ?>
-                        </select>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Pilih Data</h3>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" value="Lihat Hasil" name="submit" class="btn btn-primary">
+
+                    <div class="box-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="file">Kata Kunci ( hastag ) </label>
+                                <select class="form-control" name="key">
+                                    <option value="" disabled selected>-- Silahkan pilih --</option>
+                                    <?php foreach($db->query("SELECT hastag FROM `tweets` GROUP BY hastag")->get() as $hastag):?>
+                                    <option value="<?= $hastag['hastag'] ?>"> <?= $hastag['hastag'] ?> </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Lihat Hasil" name="submit" class="btn btn-primary">
+                            </div>
+                        </form>
                     </div>
-                </form>
-              </div>
-            </div>
-            
-          </div>
-    <?php if(isset($key)): ?>
-        <!-- ROW 6 -->
-        <div class="col-md-6">
-            <!-- Donut chart -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <i class="fa fa-bar-chart-o"></i>
+                </div>
 
-              <h3 class="box-title">Hasil Analisis : <?= $key ?> </h3>
+            </div>
+            <?php if(isset($key)): ?>
+            <!-- ROW 6 -->
+            <div class="col-md-6">
+                <!-- Donut chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bar-chart-o"></i>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+                        <h3 class="box-title">Hasil Analisis : <?= $key ?> </h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="donut-chart" style="height: 300px;"></div>
+                        <p>Jumlah Tweet : <?= $total ?></p>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
             </div>
-            <div class="box-body">
-              <div id="donut-chart" style="height: 300px;"></div>
-              <p>Jumlah Tweet : <?= $total ?></p>
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <h3 class="box-title">Hasil Analisis : <?= $key ?> </h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="bar-chart" style="height: 300px;"></div>
+                        <p>Jumlah Tweet : <?= $total ?></p>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
             </div>
-            <!-- /.box-body-->
-          </div>
-          <!-- /.box -->
+            <?php endif; ?>
         </div>
-        <div class="col-md-6">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                <i class="fa fa-bar-chart-o"></i>
-                <h3 class="box-title">Hasil Analisis : <?= $key ?> </h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
-                </div>
-                <div class="box-body">
-                    <div id="bar-chart" style="height: 300px;"></div>
-                    <p>Jumlah Tweet : <?= $total ?></p>
-                </div>
-                <!-- /.box-body-->
-            </div>
-        </div>
-    <?php endif; ?>
-      </div>
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
 
 <?php
 if(isset($key)):
